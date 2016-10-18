@@ -5,6 +5,7 @@ public class Waski : MonoBehaviour {
 
     public Actions currentAction;
     public Transform armata;
+    public Transform kid;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,10 @@ public class Waski : MonoBehaviour {
                 break;
             case Actions.Kids4:
                 armata.GetComponent<Kids_four>().enabled = true;
+                break;
+            case Actions.Kids5:
+                armata.GetComponent<Kids_four>().enabled = false;
+                kid.GetComponent<Kids_five>().enabled = true;
                 break;
         }
 
