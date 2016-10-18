@@ -4,6 +4,7 @@ using System.Collections;
 public class Waski : MonoBehaviour {
 
     public Actions currentAction;
+    public Transform armata;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,7 @@ public class Waski : MonoBehaviour {
                 GetComponent<Kids_two>().enabled = false;
                 break;
             case Actions.Kids4:
-
+                armata.GetComponent<Kids_four>().enabled = true;
                 break;
         }
 
