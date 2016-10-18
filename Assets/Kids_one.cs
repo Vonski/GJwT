@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Kids_one : MonoBehaviour {
-    public Transform player;
+    public Transform p1;
     int tmp;
 
     // Use this for initialization
@@ -15,20 +15,25 @@ public class Kids_one : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.position += Vector3.up * 0.2f;
+            p1.position += Vector3.up * 0.4f;
             tmp++;
         }
         if (Input.GetKeyUp(KeyCode.Space))
-            player.position += Vector3.down * 0.2f;
+        {
+            p1.position += Vector3.down * 0.4f;
+        }
     }
 
     IEnumerator IsJumpingFast(float waitTime)
     {
         while (true)
         {
-            if (tmp > 1)
+            if (tmp > 7)
             {
                 GetComponent<Waski>().currentAction++;
+                p1.position += Vector3.right * 32f;
+                p1.GetChild(0).position -= Vector3.right * 5f;
+                p1.GetChild(1).position -= Vector3.right * 8f;
                 StopCoroutine(IsJumpingFast(0f));
             }
             tmp = 0;
