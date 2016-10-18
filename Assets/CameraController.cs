@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-    private int currentAction;
+    private Actions currentAction;
     public Transform controller;
     public Transform p1;
     public Transform p2;
@@ -16,15 +16,17 @@ public class CameraController : MonoBehaviour {
 
         switch (currentAction)
         {
-            case 1:
+            case Actions.Kids1:
                 transform.position = p1.transform.position + Vector3.back*10;
                 break;
-            case 6:
+            case Actions.Mister1:
                 transform.position = p2.transform.position + Vector3.back * 10;
                 break;
-            case 11:
+            case Actions.Girl1:
                 transform.position = p3.transform.position + Vector3.back * 10;
                 break;
         }
+
+        
     }
 }

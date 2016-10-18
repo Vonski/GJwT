@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Actions { Kids1, Kids2, Kids3, Kids4, Kids5, Mister1, Mister2, Mister3, Mister4, Girl1, Girl2, Girl3, Girl4, Girl5 };
-
-public class ScenarioController : MonoBehaviour {
+public class Waski : MonoBehaviour {
 
     public Actions currentAction;
 
