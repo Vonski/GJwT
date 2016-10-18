@@ -18,7 +18,6 @@ public class Kids_four : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Shot");
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile"),transform.position+diff*5f,new Quaternion(0f,0f,0f,0f));
             spawned.GetComponent<Rigidbody2D>().velocity = diff * 30;
         }
