@@ -3,7 +3,9 @@ using System.Collections;
 
 public class GirlThree : MonoBehaviour {
 
-    private bool Shake = false;
+    bool Shake = false;
+    string Target = "the";
+    int CurrentLetter = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +19,16 @@ public class GirlThree : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("w"))
-           Shake = true;
+        
+        if (Input.GetKeyDown((char.ToString(Target[CurrentLetter])))) {
+            CurrentLetter++;
+            if (CurrentLetter >= Target.Length)
+            {
+                CurrentLetter = 0;
+                Shake = true;
+            }
+        }
+
 
         if (Shake)
             ShakeIt();
