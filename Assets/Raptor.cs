@@ -9,9 +9,10 @@ public class Raptor : MonoBehaviour {
 	void Start () {
         
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		
 	    switch (currentAction)
         {
 		case Actions.Mister1:
@@ -22,11 +23,16 @@ public class Raptor : MonoBehaviour {
 			GetComponent<Mister_two>().enabled = true;
 			break;
 		case Actions.Mister3:
-			GetComponent<Mister_two>().enabled = false;
+			/*GetComponent<Mister_two>().enabled = false;
 			GetComponent<Mister_three>().enabled = true;
+			*/
+			if(GetComponent<Mister_three>().enabled == false) {
+				currentAction++;
+			}
+
 			break;
 		case Actions.Mister4:
-			GetComponent<Mister_three>().enabled = false;
+			GetComponent<Mister_three> ().Stop ();
 			GetComponent<Mister_four>().enabled = true;
 			break;
 		/*case Actions.Mister5:
