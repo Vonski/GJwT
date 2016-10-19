@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 114000010634206254}
   - 68: {fileID: 68000012915403414}
   - 58: {fileID: 58000014234266148}
+  - 114: {fileID: 114000010334123716}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Friendly_missile
@@ -95,6 +96,17 @@ EdgeCollider2D:
   - {x: -2.4089584, y: -2.9302254}
   - {x: -0.25157928, y: 0.09020805}
   - {x: 0.98657227, y: 4.8556595}
+--- !u!114 &114000010334123716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013540575620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cb2298d305cd84395d9974c4663da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010634206254
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 114000011217240080}
   - 61: {fileID: 61000013501787998}
   - 58: {fileID: 58000012135726670}
+  - 114: {fileID: 114000011012957368}
   m_Layer: 0
   m_Name: Brokul
   m_TagString: Friendly_missile
@@ -89,6 +90,17 @@ BoxCollider2D:
   m_Offset: {x: -0.38, y: 0.33}
   serializedVersion: 2
   m_Size: {x: 2.11, y: 8.11}
+--- !u!114 &114000011012957368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012408551590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cb2298d305cd84395d9974c4663da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011217240080
 MonoBehaviour:
   m_ObjectHideFlags: 1
