@@ -19,7 +19,7 @@ public class Kids_four : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Missile"), transform.position + diff * 8f * transform.localScale.x + Vector3.Cross(diff, Vector3.back) * 1.8f * transform.localScale.x, new Quaternion(0f, 0f, 0f, 0f));
-            spawned.transform.localScale = transform.localScale*9f;
+            spawned.transform.localScale = transform.localScale;
             spawned.GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(diff * 1000000f, 13f);
         }
             

@@ -53,9 +53,11 @@ GameObject:
   - 4: {fileID: 4000012056080386}
   - 212: {fileID: 212000012000833078}
   - 58: {fileID: 58000013278448620}
+  - 114: {fileID: 114000011944136314}
+  - 50: {fileID: 50000010830596416}
   m_Layer: 0
   m_Name: BoyMcKadlub
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,6 +193,23 @@ Transform:
   - {fileID: 4000011892876586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &50000010830596416
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011314719256}
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58000013278448620
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -205,6 +224,17 @@ CircleCollider2D:
   m_Offset: {x: 0.05, y: 4.32}
   serializedVersion: 2
   m_Radius: 1.2
+--- !u!114 &114000011944136314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011314719256}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b331109cf3db74d85722c6f5a39afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000010143523142
 SpriteRenderer:
   m_ObjectHideFlags: 1

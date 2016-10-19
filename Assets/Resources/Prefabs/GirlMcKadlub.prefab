@@ -69,9 +69,11 @@ GameObject:
   - 4: {fileID: 4000012609881324}
   - 212: {fileID: 212000011850045268}
   - 58: {fileID: 58000013442214140}
+  - 114: {fileID: 114000014220758254}
+  - 50: {fileID: 50000013198379726}
   m_Layer: 0
   m_Name: GirlMcKadlub
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,6 +193,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000012609881324}
   m_RootOrder: 0
+--- !u!50 &50000013198379726
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012294831364}
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58000013442214140
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -205,6 +224,17 @@ CircleCollider2D:
   m_Offset: {x: 0.02, y: 3.91}
   serializedVersion: 2
   m_Radius: 1.08
+--- !u!114 &114000014220758254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012294831364}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b331109cf3db74d85722c6f5a39afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000011159402756
 SpriteRenderer:
   m_ObjectHideFlags: 1
