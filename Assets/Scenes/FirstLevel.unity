@@ -1939,7 +1939,7 @@ Prefab:
     - target: {fileID: 114000011274840116, guid: b98ec78144c36764f89fee6677e224ca,
         type: 2}
       propertyPath: offset
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011274840116, guid: b98ec78144c36764f89fee6677e224ca,
         type: 2}
