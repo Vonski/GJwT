@@ -6,9 +6,10 @@ public enum Actions { Kids1, Kids2, Kids3, Kids4, Kids5, Mister1, Mister2, Miste
 public class ScenarioController : MonoBehaviour {
 
     public Actions currentAction;
+    public Transform GirlGhost;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -42,6 +43,23 @@ public class ScenarioController : MonoBehaviour {
 		case Actions.Mister4:
 			//GetComponent<Mister_four>().enabled = true;
 			break;
+
+            case Actions.Girl1:
+                GetComponent<GirlOne>().enabled = true;
+                GirlGhost.GetComponent<GirlOneMovement>().enabled = true;
+                break;
+            case Actions.Girl2:
+                GetComponent<GirlOne>().enabled = false;
+                GirlGhost.GetComponent<GirlOneMovement>().enabled = false;
+
+                GirlGhost.GetComponent<GirlTwoMovement>().enabled = true;
+                GirlGhost.GetComponent<GirlTwoMovement>().OnActionStart();
+                break;
+            case Actions.Girl3:
+                GirlGhost.GetComponent<GirlTwoMovement>().enabled = false;
+                GetComponent<GirlThree>().enabled = true;
+                GetComponent<GirlThree>().OnActionStart();
+                break;
         }
 
         /*if (Input.GetMouseButtonDown(0))

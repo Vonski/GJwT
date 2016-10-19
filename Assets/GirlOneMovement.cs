@@ -31,6 +31,6 @@ public class GirlOneMovement : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.name == "Missile")
-            GameController.GetComponent<Nietup>().currentAction++;
+            GameController.GetComponent<ScenarioController>().currentAction++;
     }
 }

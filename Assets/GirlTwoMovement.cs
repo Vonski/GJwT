@@ -46,7 +46,7 @@ public class GirlTwoMovement : MonoBehaviour {
         if (GirlCaught && GirlStable)
             if (GetComponent<Rigidbody2D>().velocity.magnitude < 0.5)
             {
-                GameController.GetComponent<Nietup>().currentAction++;
+                GameController.GetComponent<ScenarioController>().currentAction++;
                 CleanUp();
             }
     }
