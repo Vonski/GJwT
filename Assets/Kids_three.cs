@@ -28,7 +28,10 @@ public class Kids_three : MonoBehaviour {
                 spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Carrot"), transform.position + diff * 8f * transform.localScale.x + Vector3.Cross(diff, Vector3.back) * 1.8f * transform.localScale.x, new Quaternion(0f, 0f, 0f, 0f));
             else
                 spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Brokul"), transform.position + diff * 8f * transform.localScale.x + Vector3.Cross(diff, Vector3.back) * 1.8f * transform.localScale.x, new Quaternion(0f, 0f, 0f, 0f));
-            spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(1f, 5f);
+            if(Random.Range(0f, 100f)<50f)
+                spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 10f);
+            else
+                spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 10f)*(-1);
             spawned.transform.localScale = transform.localScale/3f;
             spawned.GetComponent<Rigidbody2D>().gravityScale = 0f;
             spawned.GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(diff * 1000000f,20f);
@@ -39,8 +42,16 @@ public class Kids_three : MonoBehaviour {
     {
         while (true)
         {
-            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Missile"), new Vector3(transform.position.x,Random.Range(-3f,6f)), new Quaternion(0f, 0f, 0f, 0f));
+            int tmp = (int)Random.Range(0f, 100f);
+            GameObject spawned;
+            if (tmp < 33)
+                spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Pizza"), new Vector3(transform.position.x, Random.Range(-3f, 6f)), new Quaternion(0f, 0f, 0f, 0f));
+            else if (tmp < 66)
+                spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Fryty"), new Vector3(transform.position.x, Random.Range(-3f, 6f)), new Quaternion(0f, 0f, 0f, 0f));
+            else
+                spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Burger-01"), new Vector3(transform.position.x, Random.Range(-3f, 6f)), new Quaternion(0f, 0f, 0f, 0f));
             spawned.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            spawned.transform.localScale = transform.localScale / 3f;
 
             Vector3 diff = p1.transform.position - spawned.transform.position;
             diff.Normalize();

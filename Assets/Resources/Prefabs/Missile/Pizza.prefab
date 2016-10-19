@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010471804300}
   - 212: {fileID: 212000010346473066}
   - 68: {fileID: 68000013922933492}
+  - 50: {fileID: 50000010422039630}
   m_Layer: 0
   m_Name: Pizza
   m_TagString: Enemy_missile
@@ -41,6 +42,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &50000010422039630
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010295731606}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!68 &68000013922933492
 EdgeCollider2D:
   m_ObjectHideFlags: 1
