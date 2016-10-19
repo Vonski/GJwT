@@ -17,16 +17,16 @@ public class CameraController : MonoBehaviour {
         switch (currentAction)
         {
         case Actions.Kids1:
-                transform.position = p1.transform.position + Vector3.back*10;
+                transform.position = p1.transform.position + Vector3.back*10 + Vector3.up * 1.4f;
                 break;
 		case Actions.Kids2:
-			transform.position = p1.transform.position + Vector3.back*10;
+			transform.position = p1.transform.position + Vector3.back*10 + Vector3.up*1.6f;
 			break;
 		case Actions.Kids3:
-			transform.position = p1.transform.position + Vector3.back*10;
+			transform.position = p1.transform.position + Vector3.back*10 + Vector3.left*5f + Vector3.up*2f;
 			break;
 		case Actions.Kids4:
-			transform.position = p1.transform.position + Vector3.back*10;
+			transform.position = p1.transform.position + Vector3.back * 10 + Vector3.left * 5f + Vector3.up * 2f;
 			break;
 		case Actions.Kids5:
 			transform.position = p1.transform.position + Vector3.back*10;

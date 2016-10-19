@@ -7,6 +7,8 @@ public class ScenarioController : MonoBehaviour {
 
     public Actions currentAction;
     public Transform GirlGhost;
+    public Transform armata;
+    public Transform kid;
 
     // Use this for initialization
     void Start () {
@@ -17,8 +19,26 @@ public class ScenarioController : MonoBehaviour {
 	    switch (currentAction)
         {
             case Actions.Kids1:
+                GetComponent<Kids_one>().enabled = true;
                 break;
-		case Actions.Mister1:
+            case Actions.Kids2:
+                GetComponent<Kids_one>().enabled = false;
+                GetComponent<Kids_two>().enabled = true;
+                break;
+            case Actions.Kids3:
+                GetComponent<Kids_two>().enabled = false;
+                armata.GetComponent<Kids_three>().enabled = true;
+                break;
+            case Actions.Kids4:
+                armata.GetComponent<Kids_three>().enabled = false;
+                armata.GetComponent<Kids_three>().StopAllCoroutines();
+                armata.GetComponent<Kids_four>().enabled = true;
+                break;
+            case Actions.Kids5:
+                armata.GetComponent<Kids_four>().enabled = false;
+                kid.GetComponent<Kids_five>().enabled = true;
+                break;
+            case Actions.Mister1:
 			if(GetComponent<Mister_one>().enabled == false) {
 				GetComponent<Mister_two>().enabled = true;
 				currentAction++;

@@ -5,7 +5,7 @@ public class Kids_two : MonoBehaviour {
 
     public Transform hangman;
     public Transform p1;
-    private Transform boy, girl;
+    private Transform boy, girl, boy_pos, girl_pos;
     public int[] table;
     private int currentIndex;
     public float time;
@@ -15,6 +15,8 @@ public class Kids_two : MonoBehaviour {
         hangman.GetComponent<AerobikController>().enabled = true;
         girl = p1.GetChild(1).GetChild(0);
         boy = p1.GetChild(0).GetChild(0);
+        girl_pos = p1.GetChild(1);
+        boy_pos = p1.GetChild(0);
         currentIndex = 0;
         table = new int[5];
     }
@@ -88,15 +90,28 @@ public class Kids_two : MonoBehaviour {
             if (Input.anyKeyDown)
             {
                 Debug.Log("Failure");
-                p1.position += Vector3.right * 35f;
-                p1.gameObject.SetActive(false);
-                GetComponent<Waski>().currentAction++;
+                p1.position += Vector3.right * 24f + Vector3.down*2f;
+
+                GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.transform.position + Vector3.up * 0.08f, boy.transform.rotation);
+                spawned.transform.parent = boy_pos;
+                spawned.transform.localScale = boy.localScale/3;
+                spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.transform.position + Vector3.up * 0.24f, girl.transform.rotation);
+                spawned.transform.parent = girl_pos;
+                spawned.transform.localScale = girl.localScale/3;
+
+                Destroy(boy.gameObject);
+                Destroy(girl.gameObject);
+
+                girl_pos.position += Vector3.up * 0.55f;
+                boy_pos.position += Vector3.right * 5f + Vector3.up * 0.15f;
+                //p1.gameObject.SetActive(false);
+                GetComponent<ScenarioController>().currentAction++;
             }
         }
         else
         {
-            //p1.position += Vector3.right * 35f;
-            GetComponent<Waski>().currentAction++;
+            
+            GetComponent<ScenarioController>().currentAction++;
         }
 
         if (time + 0.3f < Time.time)

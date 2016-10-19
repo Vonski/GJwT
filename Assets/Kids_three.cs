@@ -4,17 +4,23 @@ using System.Collections;
 public class Kids_three : MonoBehaviour {
 
     public Transform p1,controller;
+    public Transform boy, girl;
     public float offset;
     private float startTime;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        girl = p1.GetChild(1).GetChild(0);
+        boy = p1.GetChild(0).GetChild(0);
         StartCoroutine(RespawnBurger(1f));
         startTime = Time.time;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        girl = p1.GetChild(1).GetChild(0);
+        boy = p1.GetChild(0).GetChild(0);
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Vector3.back*10 - transform.position;
         diff.Normalize();
 
@@ -37,12 +43,12 @@ public class Kids_three : MonoBehaviour {
                 spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 10f)*(-1);
             spawned.transform.localScale = transform.localScale/3f;
             spawned.GetComponent<Rigidbody2D>().gravityScale = 0f;
-            spawned.GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(diff * 1000000f,20f);
+            spawned.GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(diff * 1000000f,10f);
         }
 
         if (startTime + offset < Time.time)
         {
-            controller.GetComponent<Waski>().currentAction++;
+            controller.GetComponent<ScenarioController>().currentAction++;
         }
     }
 
@@ -65,10 +71,14 @@ public class Kids_three : MonoBehaviour {
             else
                 spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 10f) * (-1);
 
-            Vector3 diff = p1.transform.position - spawned.transform.position;
+            Vector3 diff;
+            if (Random.Range(0f,100f)<50f)
+                diff = boy.transform.position - spawned.transform.position;
+            else
+                diff = girl.transform.position - spawned.transform.position;
             diff.Normalize();
             
-            spawned.GetComponent<Rigidbody2D>().velocity = diff * 5f;
+            spawned.GetComponent<Rigidbody2D>().velocity = diff * 2f;
 
             yield return new WaitForSeconds(waitTime);
         }
