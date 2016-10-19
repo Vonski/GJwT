@@ -89,12 +89,13 @@ public class Kids_two : MonoBehaviour {
             {
                 Debug.Log("Failure");
                 p1.position += Vector3.right * 35f;
+                p1.gameObject.SetActive(false);
                 GetComponent<Waski>().currentAction++;
             }
         }
         else
         {
-            p1.position += Vector3.right * 35f;
+            //p1.position += Vector3.right * 35f;
             GetComponent<Waski>().currentAction++;
         }
 
