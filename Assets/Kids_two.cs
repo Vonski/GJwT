@@ -110,6 +110,8 @@ public class Kids_two : MonoBehaviour {
         }
         else
         {
+            p1.position += Vector3.right * 24f + Vector3.down * 2f;
+
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.transform.position + Vector3.up * 0.08f, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
             spawned.transform.localScale = boy.localScale / 3;
