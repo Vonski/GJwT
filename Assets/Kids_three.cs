@@ -73,9 +73,9 @@ public class Kids_three : MonoBehaviour {
 
             Vector3 diff;
             if (Random.Range(0f,100f)<50f)
-                diff = boy.transform.position - spawned.transform.position;
+                diff = boy.transform.position - spawned.transform.position + Vector3.up;
             else
-                diff = girl.transform.position - spawned.transform.position;
+                diff = girl.transform.position - spawned.transform.position + Vector3.up;
             diff.Normalize();
             
             spawned.GetComponent<Rigidbody2D>().velocity = diff * 2f;
