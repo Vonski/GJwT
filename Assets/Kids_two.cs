@@ -104,13 +104,25 @@ public class Kids_two : MonoBehaviour {
 
                 girl_pos.position += Vector3.up * 0.55f;
                 boy_pos.position += Vector3.right * 5f + Vector3.up * 0.15f;
-                //p1.gameObject.SetActive(false);
+                
                 GetComponent<ScenarioController>().currentAction++;
             }
         }
         else
         {
-            
+            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.transform.position + Vector3.up * 0.08f, boy.transform.rotation);
+            spawned.transform.parent = boy_pos;
+            spawned.transform.localScale = boy.localScale / 3;
+            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.transform.position + Vector3.up * 0.24f, girl.transform.rotation);
+            spawned.transform.parent = girl_pos;
+            spawned.transform.localScale = girl.localScale / 3;
+
+            Destroy(boy.gameObject);
+            Destroy(girl.gameObject);
+
+            girl_pos.position += Vector3.up * 0.55f;
+            boy_pos.position += Vector3.right * 5f + Vector3.up * 0.15f;
+
             GetComponent<ScenarioController>().currentAction++;
         }
 
