@@ -17,9 +17,11 @@ public class CameraController : MonoBehaviour {
         switch (currentAction)
         {
             case Actions.Kids1:
+			Debug.Log ("Kids1 cam");
                 transform.position = p1.transform.position + Vector3.back*10;
                 break;
-            case Actions.Mister1:
+		case Actions.Mister1:
+			Debug.Log ("Mister1 cam");
                 transform.position = p2.transform.position + Vector3.back * 10;
                 break;
             case Actions.Girl1:
