@@ -33,8 +33,9 @@ public class GirlOneMovement : MonoBehaviour {
     {
         if (coll.gameObject.name == "Missile")
         {
-            GameController.GetComponent<ScenarioController>().currentAction++;
-            p3.position = new Vector2(p3.position.x, p3.position.y - 10.0f);
+            //p3.position = new Vector2(0,0);// new Vector2(p3.position.x, p3.position.y - 10.0f);
+            //Debug.Log(p3.position);
+            //GameController.GetComponent<ScenarioController>().currentAction++;
         }
     }
 }

@@ -836,7 +836,6 @@ GameObject:
   - 114: {fileID: 795863743}
   - 114: {fileID: 795863742}
   - 114: {fileID: 795863750}
-  - 114: {fileID: 795863751}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -979,17 +978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Girl: {fileID: 1153685905}
---- !u!114 &795863751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 795863739}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e20194d429972b441bab22bfec307340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1054333994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,3 +1519,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &2146522071 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012822014088, guid: e384341c3f1708c459b9b0f17566cebf,
+    type: 2}
+  m_PrefabInternal: {fileID: 301851308}
+--- !u!114 &2146522075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146522071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20194d429972b441bab22bfec307340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
