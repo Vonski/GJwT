@@ -24,6 +24,7 @@ public class GirlOne : MonoBehaviour
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile"), (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), new Quaternion(0f, 0f, 0f, 0f));
             spawned.gameObject.name = "Missile";
             Missiles.Add(spawned);
+            spawned.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 9.0f);
         }
     }
 

@@ -9,6 +9,7 @@ public class GirlOneMovement : MonoBehaviour {
     public float XMovementRange = 7.0f;
     public float YMovementRange = 1.0f;
     public Transform GameController;
+    public Transform p3;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,9 @@ public class GirlOneMovement : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.name == "Missile")
+        {
             GameController.GetComponent<ScenarioController>().currentAction++;
+            p3.position = new Vector2(p3.position.x, p3.position.y - 10.0f);
+        }
     }
 }

@@ -59,6 +59,9 @@ public class GirlTwoMovement : MonoBehaviour {
 
     public void GetCaught()
     {
+        if (GirlCaught)
+            return;
+
         GirlStable = false;
         GirlCaught = true;
         gameObject.AddComponent<Rigidbody2D>();

@@ -41,8 +41,12 @@ public class ScenarioController : MonoBehaviour {
 
 			break;
 		case Actions.Mister4:
-			//GetComponent<Mister_four>().enabled = true;
-			break;
+                if (GetComponent<Mister_four>().enabled == false)
+                {
+                    //GetComponent<Mister_four>().enabled = true;
+                    currentAction++;
+                }
+                break;
 
             case Actions.Girl1:
                 GetComponent<GirlOne>().enabled = true;
