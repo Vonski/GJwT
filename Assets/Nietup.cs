@@ -28,6 +28,8 @@ public class Nietup : MonoBehaviour {
                 break;
             case Actions.Girl3:
                 GirlGhost.GetComponent<GirlTwoMovement>().enabled = false;
+                GetComponent<GirlThree>().enabled = true;
+                GetComponent<GirlThree>().OnActionStart();
                 break;
         }
 
