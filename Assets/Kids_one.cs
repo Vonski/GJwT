@@ -40,18 +40,20 @@ public class Kids_one : MonoBehaviour {
             bskak.GetComponent<SpriteRenderer>().enabled = false;
             gskak.GetComponent<SpriteRenderer>().enabled = false;
 
-            p1.position += Vector3.right * 32f;
-            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikBoyKadlub"), boy.transform.position,boy.transform.rotation);
+            p1.position += Vector3.right * 16f;
+            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikBoyKadlub"), boy.transform.position + Vector3.up*0.08f, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
-            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikGirlKadlub"), girl.transform.position, girl.transform.rotation);
+            spawned.transform.localScale = boy.localScale;
+            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikGirlKadlub"), girl.transform.position + Vector3.up*0.24f, girl.transform.rotation);
             spawned.transform.parent = girl_pos;
+            spawned.transform.localScale = girl.localScale;
 
             Destroy(boy.gameObject);
             Destroy(girl.gameObject);
 
-            girl_pos.position -= Vector3.right * 5f;
-            boy_pos.position -= Vector3.right * 2f;
-            GetComponent<Waski>().currentAction++;
+            girl_pos.position -= Vector3.right * 2f;
+            boy_pos.position -= Vector3.right * 1f;
+            GetComponent<ScenarioController>().currentAction++;
         }
     }
 
