@@ -9,7 +9,6 @@ public class ScenarioController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        currentAction = Actions.Kids1;
 	}
 	
 	// Update is called once per frame
@@ -18,9 +17,34 @@ public class ScenarioController : MonoBehaviour {
         {
             case Actions.Kids1:
                 break;
+		case Actions.Mister1:
+			if(GetComponent<Mister_one>().enabled == false) {
+				GetComponent<Mister_two>().enabled = true;
+				currentAction++;
+			}
+			break;
+		case Actions.Mister2:
+			if(GetComponent<Mister_two>().enabled == false) {
+				GetComponent<Mister_three>().enabled = true;
+				currentAction++;
+			}
+			break;
+		case Actions.Mister3:
+			/*GetComponent<Mister_two>().enabled = false;
+			GetComponent<Mister_three>().enabled = true;
+			*/
+			if(GetComponent<Mister_three>().enabled == false) {
+				GetComponent<Mister_four>().enabled = true;
+				currentAction++;
+			}
+
+			break;
+		case Actions.Mister4:
+			//GetComponent<Mister_four>().enabled = true;
+			break;
         }
 
-        if (Input.GetMouseButtonDown(0))
-            currentAction++;
+        /*if (Input.GetMouseButtonDown(0))
+            currentAction++;*/
 	}
 }
