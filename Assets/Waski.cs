@@ -39,7 +39,7 @@ public class Waski : MonoBehaviour {
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0))
-            currentAction++;
+        /*if (Input.GetMouseButtonDown(0))
+            currentAction++;*/
 	}
 }
