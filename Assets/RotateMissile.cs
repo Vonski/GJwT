@@ -9,4 +9,12 @@ public class RotateMissile : MonoBehaviour {
 	void FixedUpdate () {
         transform.Rotate(Vector3.forward*rot_speed);
 	}
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(tag=="Enemy_missile" || coll.gameObject.tag== "Enemy_missile")
+            GetComponent<Rigidbody2D>().gravityScale = 2f;
+        if ((tag == "Enemy_missile" && coll.gameObject.tag == "Player") || (tag == "Player" && coll.gameObject.tag == "Enemy_missile"))
+            Debug.Log("Failure");
+    }
 }
