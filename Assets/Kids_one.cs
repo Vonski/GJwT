@@ -61,7 +61,7 @@ public class Kids_one : MonoBehaviour {
     {
         while (true)
         {
-            if (tmp > 7)
+            if (tmp > 0)
             {
                 boy.GetComponent<Animator>().SetBool("IsJumping", false);
                 girl.GetComponent<Animator>().SetBool("IsJumping", false);

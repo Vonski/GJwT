@@ -48,7 +48,11 @@ public class Kids_three : MonoBehaviour {
 
         if (startTime + offset < Time.time)
         {
-            controller.GetComponent<ScenarioController>().currentAction++;
+            StopAllCoroutines();
+            if(GameObject.FindGameObjectsWithTag("Enemy_missile").Length==0)
+            {
+                controller.GetComponent<ScenarioController>().currentAction++;
+            }
         }
     }
 
