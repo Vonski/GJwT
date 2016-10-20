@@ -7,6 +7,9 @@ public class GirlThree : MonoBehaviour {
     bool Started = false;
     string Target = "thereisnosanta";
     int CurrentLetter = 0;
+    float time = 3;
+
+    public Transform GameController;
 
 	// Use this for initialization
 	void Start () {
@@ -49,13 +52,24 @@ public class GirlThree : MonoBehaviour {
             }
         }
 
-
         if (Shake)
-            ShakeIt();
+        {
+            time -= Time.deltaTime;
+            if (time >= 0)
+                ShakeIt();
+            else
+                Stop();
+        }
 	}
 
     void ShakeIt()
     {
         transform.position += new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.1f, 0.1f), 0);
+    }
+
+    void Stop()
+    {
+        transform.parent.transform.position += new Vector3(0, -12, 0);
+        GameController.GetComponent<ScenarioController>().currentAction++;
     }
 }
