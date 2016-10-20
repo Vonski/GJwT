@@ -10,6 +10,8 @@ TagManager:
   - Enemy_missile
   - Friendly_missile
   - Gorczyca
+  - Actual
+  - Fatual
   layers:
   - Default
   - TransparentFX
