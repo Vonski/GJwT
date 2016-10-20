@@ -53,8 +53,8 @@ public class Kids_one : MonoBehaviour {
             GetComponent<Points>().ghost1++;
 
             p1.position += Vector3.right * 16f;
-            girl_pos.position += Vector3.right * 3f + Vector3.up*0.15f;
-            boy_pos.position -= Vector3.right * 3f - Vector3.up * 0.08f;
+            girl_pos.position += Vector3.right * 4f + Vector3.up*0.05f;
+            boy_pos.position -= Vector3.right * 1f + Vector3.up * 0.02f;
             GetComponent<ScenarioController>().currentAction++;
         }
     }
@@ -63,7 +63,7 @@ public class Kids_one : MonoBehaviour {
     {
         while (true)
         {
-            if (tmp > 7)
+            if (tmp > 0)
             {
                 boy.GetComponent<Animator>().SetBool("IsJumping", false);
                 girl.GetComponent<Animator>().SetBool("IsJumping", false);
