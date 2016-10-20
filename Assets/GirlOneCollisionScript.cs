@@ -19,8 +19,7 @@ public class GirlOneCollisionScript : MonoBehaviour {
     {
         if (coll.gameObject.name == "Missile")
         {
-            gameObject.transform.parent.transform.parent.transform.position += new Vector3(0, -12.0f, 0);
-            GameController.GetComponent<ScenarioController>().currentAction++;
+            transform.parent.transform.GetComponent<GirlOneMovement>().lerp = true;
         }
     }
 }
