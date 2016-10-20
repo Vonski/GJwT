@@ -10,6 +10,8 @@ public class GirlFour : MonoBehaviour {
     int shakes = 0;
     public bool lerp = false;
     Vector3 dest;
+    public AudioClip bravo1, bravo2, bravo3, bravo4;
+    AudioSource source;
 
     // Use this for initialization
     void Start () {
@@ -24,6 +26,7 @@ public class GirlFour : MonoBehaviour {
             Johny.transform.localScale = new Vector3(0.5f, 0.5f, 0);
             Started = FirstH = true;
             dest = transform.parent.transform.position + new Vector3(0, 72.0f, 0);
+            source = GetComponent<AudioSource>();
         }
 
     }
@@ -31,6 +34,20 @@ public class GirlFour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        if(!source.isPlaying)
+        {
+            if (Random.Range(0f, 100f) < 20f)
+                source.clip = bravo1;
+            else if (Random.Range(0f, 100f) < 40f)
+                source.clip = bravo2;
+            else if (Random.Range(0f, 100f) < 80f)
+                source.clip = bravo3;
+            else
+                source.clip = bravo4;
+            source.Play();
+        }
+
         if (!lerp) { 
         if (FirstH)
             if (Input.GetKeyDown("up"))
@@ -54,7 +71,7 @@ public class GirlFour : MonoBehaviour {
                 shakes++;
             }
 
-            if (shakes == 3)
+            if (shakes == 8)
         {
             lerp = true;
         }
