@@ -9,6 +9,8 @@ public class Kids_two : MonoBehaviour {
     public int[] table;
     private int currentIndex;
     public float time;
+    bool lerp;
+    Vector3 dest, destg, destb;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +21,7 @@ public class Kids_two : MonoBehaviour {
         boy_pos = p1.GetChild(0);
         currentIndex = 0;
         table = new int[5];
+        lerp = false;
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class Kids_two : MonoBehaviour {
                 table[i] = hangman.GetComponent<AerobikController>().table2[i];
         }
 
+        if(!lerp)
         if (currentIndex < table.Length)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
@@ -91,7 +95,7 @@ public class Kids_two : MonoBehaviour {
             {
                 Debug.Log("Failure");
                 
-                if(currentIndex<3)
+                if(currentIndex<1)
                 {
                     GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyFatFinal"), boy.position, boy.transform.rotation);
                     spawned.transform.parent = boy_pos;
@@ -105,9 +109,12 @@ public class Kids_two : MonoBehaviour {
                     Destroy(boy.gameObject);
                     Destroy(girl.gameObject);
 
-                    p1.position += Vector3.right * 24f + Vector3.down * 2f;
-                    girl_pos.position += Vector3.right * 0f + Vector3.up * 0.55f;
-                    boy_pos.position -= Vector3.left * 4f - Vector3.down * 0.35f;
+                    lerp = true;
+
+
+                    dest = p1.position + Vector3.right * 24f;
+                    destg = girl_pos.position + Vector3.right * 24f + Vector3.down;
+                    destb = girl_pos.position + Vector3.right * 24f + Vector3.down*2f;
                 }
                 else
                 {
@@ -121,12 +128,13 @@ public class Kids_two : MonoBehaviour {
                     Destroy(boy.gameObject);
                     Destroy(girl.gameObject);
 
-                    p1.position += Vector3.right * 24f + Vector3.down * 2f;
-                    girl_pos.position += Vector3.up * 0.55f;
-                    boy_pos.position += Vector3.right * 4f + Vector3.up * 0.1f;
+                    lerp = true;
+
+
+                    dest = p1.position + Vector3.right * 24f;
+                    destg = girl_pos.position + Vector3.right * 24f + Vector3.down;
+                    destb = girl_pos.position + Vector3.right * 24f + Vector3.down * 2f;
                 }
-                
-                GetComponent<ScenarioController>().currentAction++;
             }
         }
         else
@@ -134,11 +142,9 @@ public class Kids_two : MonoBehaviour {
 
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.position, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
-            spawned.transform.position = new Vector3(0f, 0f, 0f);
             spawned.transform.localScale = boy.localScale / 3;
             spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.position, girl.transform.rotation);
             spawned.transform.parent = girl_pos;
-            spawned.transform.position = new Vector3(0f, 0f, 0f);
             spawned.transform.localScale = girl.localScale / 3;
 
             Destroy(boy.gameObject);
@@ -146,14 +152,14 @@ public class Kids_two : MonoBehaviour {
 
             GetComponent<Points>().ghost1++;
 
-            p1.position += Vector3.right * 24f + Vector3.down * 2f;
-            girl_pos.position += Vector3.right * 22f + Vector3.up * 0.55f;
-            boy_pos.position += Vector3.right * 20f + Vector3.up * 0.15f;
+            lerp = true;
 
-            GetComponent<ScenarioController>().currentAction++;
+            dest = p1.position + Vector3.right * 24f;
+            destg = girl_pos.position + Vector3.right * 24f + Vector3.down;
+            destb = girl_pos.position + Vector3.right * 24f + Vector3.down * 2f;
         }
 
-        if (time + 0.3f < Time.time)
+        if (time + 0.3f < Time.time && !lerp)
         {
             boy.GetComponent<Animator>().SetBool("LeftArm", false);
             boy.GetComponent<Animator>().SetBool("RightArm", false);
@@ -167,5 +173,33 @@ public class Kids_two : MonoBehaviour {
             girl.GetComponent<Animator>().SetBool("Head", false);
         }
 
+    }
+
+    void FixedUpdate()
+    {
+        if (lerp)
+        {
+            Vector3 diff = dest - p1.transform.position;
+            diff.Normalize();
+            if (Vector3.Distance(p1.transform.position, dest) > 0.3f)
+                p1.transform.position += diff * 0.1f;
+            else if (Vector3.Distance(girl_pos.transform.position, destg) > 0.3f)
+            {
+                diff = destg - girl_pos.position;
+                diff.Normalize();
+
+                girl_pos.transform.position += diff * 0.1f;
+            }
+            else if (Vector3.Distance(boy_pos.transform.position, destb) > 0.3f)
+            {
+                diff = destb - boy_pos.position;
+                diff.Normalize();
+                
+                boy_pos.transform.position += diff * 0.1f;
+            }
+            else
+                GetComponent<ScenarioController>().currentAction++;
+
+        }
     }
 }

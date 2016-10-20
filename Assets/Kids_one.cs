@@ -6,7 +6,8 @@ public class Kids_one : MonoBehaviour {
     private Transform boy, girl, boy_pos, girl_pos, bskak, gskak;
     int tmp;
     float time;
-    bool isEnd;
+    bool isEnd,lerp;
+    Vector3 dest, destb, destg;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +20,7 @@ public class Kids_one : MonoBehaviour {
         bskak = boy.GetChild(5);
         StartCoroutine(IsJumpingFast(1f));
         isEnd = false;
+        lerp = false;
     }
 	
 	// Update is called once per frame
@@ -30,7 +32,7 @@ public class Kids_one : MonoBehaviour {
             time = Time.time;
             tmp++;
         }
-        if(time+0.1f<Time.time)
+        if(time+0.1f<Time.time && !isEnd && !lerp)
         {
             boy.GetComponent<Animator>().SetBool("IsJumping", false);
             girl.GetComponent<Animator>().SetBool("IsJumping", false);
@@ -40,11 +42,12 @@ public class Kids_one : MonoBehaviour {
             bskak.GetComponent<SpriteRenderer>().enabled = false;
             gskak.GetComponent<SpriteRenderer>().enabled = false;
 
-            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikBoyKadlub"), boy_pos.position, boy.transform.rotation);
+            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikBoyKadlub"), boy.position, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
             spawned.transform.localScale = boy.localScale;
-            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikGirlKadlub"), girl_pos.position, girl.transform.rotation);
+            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikGirlKadlub"), girl.position, girl.transform.rotation);
             spawned.transform.parent = girl_pos;
+            spawned.transform.position += Vector3.up * 0.2f;
             spawned.transform.localScale = girl.localScale;
 
             Destroy(boy.gameObject);
@@ -52,10 +55,43 @@ public class Kids_one : MonoBehaviour {
 
             GetComponent<Points>().ghost1++;
 
-            p1.position += Vector3.right * 16f;
-            girl_pos.position += Vector3.right * 4f + Vector3.up*0.05f;
-            boy_pos.position -= Vector3.right * 1f + Vector3.up * 0.02f;
-            GetComponent<ScenarioController>().currentAction++;
+            lerp = true;
+            isEnd = false;
+
+            dest = p1.position + Vector3.right * 16f;
+            destg = girl_pos.position + Vector3.right * 16f - Vector3.right * 4f;
+            destb = girl_pos.position + Vector3.right * 16f - Vector3.right * 8f + Vector3.up * 0.15f;
+            Debug.Log(destb);
+            
+            //GetComponent<ScenarioController>().currentAction++;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (lerp)
+        {
+            Vector3 diff = dest - p1.transform.position;
+            diff.Normalize();
+            if (Vector3.Distance(p1.transform.position, dest) > 0.3f)
+                p1.transform.position += diff*0.1f;
+            else if (Vector3.Distance(girl_pos.transform.position, destg) > 0.3f)
+            {
+                diff = destg - girl_pos.position;
+                diff.Normalize();
+
+                girl_pos.transform.position += diff * 0.1f;
+            }
+            else if (Vector3.Distance(boy_pos.transform.position, destb) > 0.3f)
+            {
+                diff = destb - boy_pos.position;
+                diff.Normalize();
+
+                boy_pos.transform.position += diff * 0.1f;
+            }
+            else
+                GetComponent<ScenarioController>().currentAction++;
+
         }
     }
 
