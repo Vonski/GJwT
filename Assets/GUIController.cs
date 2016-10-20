@@ -5,12 +5,12 @@ public class GUIController : MonoBehaviour {
 
     void Start()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     public void StartGame()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         GameObject.Find("GameController").GetComponent<ScenarioController>().currentAction++;
         gameObject.SetActive(false);
     }
