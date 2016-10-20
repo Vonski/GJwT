@@ -106,8 +106,8 @@ public class Kids_two : MonoBehaviour {
                     Destroy(girl.gameObject);
 
                     p1.position += Vector3.right * 24f + Vector3.down * 2f;
-                    girl_pos.position += Vector3.right * 2f + Vector3.up * 0.55f;
-                    boy_pos.position -= Vector3.left * 6f - Vector3.down * 0.35f;
+                    girl_pos.position += Vector3.right * 0f + Vector3.up * 0.55f;
+                    boy_pos.position -= Vector3.left * 4f - Vector3.down * 0.35f;
                 }
                 else
                 {

@@ -22,7 +22,7 @@ public class AerobikController : MonoBehaviour {
             table2[i] = table[i]+0;
         }
         isStartCoroutine = true;
-        StartCoroutine(BodyMoving(0.3f));
+        StartCoroutine(BodyMoving(0.03f));
 	}
 	
 	// Update is called once per frame
@@ -35,7 +35,7 @@ public class AerobikController : MonoBehaviour {
         if (isStartCoroutine)
         {
             controller.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.03f);
             isStartCoroutine = false;
         }
             

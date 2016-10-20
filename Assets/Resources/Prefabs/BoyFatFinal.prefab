@@ -40,7 +40,7 @@ GameObject:
   - 58: {fileID: 58000013692655796}
   - 114: {fileID: 114000013210286262}
   m_Layer: 0
-  m_Name: 
+  m_Name: BoyFatFinal
   m_TagString: Fatual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
