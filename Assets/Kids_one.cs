@@ -42,6 +42,9 @@ public class Kids_one : MonoBehaviour {
             bskak.GetComponent<SpriteRenderer>().enabled = false;
             gskak.GetComponent<SpriteRenderer>().enabled = false;
 
+            boy.transform.position = new Vector3(boy.transform.position.x, -1f,0f);
+            girl.transform.position = new Vector3(girl.transform.position.x, -1.24f, 0f);
+
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/AerobikBoyKadlub"), boy.position, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
             spawned.transform.localScale = boy.localScale;
@@ -71,20 +74,20 @@ public class Kids_one : MonoBehaviour {
             Vector3 diff = dest - p1.transform.position;
             diff.Normalize();
             if (Vector3.Distance(p1.transform.position, dest) > 0.3f)
-                p1.transform.position += diff*0.1f;
+                p1.transform.position += diff*0.4f;
             else if (Vector3.Distance(girl_pos.transform.position, destg) > 0.3f)
             {
                 diff = destg - girl_pos.position;
                 diff.Normalize();
 
-                girl_pos.transform.position += diff * 0.1f;
+                girl_pos.transform.position += diff * 0.4f;
             }
             else if (Vector3.Distance(boy_pos.transform.position, destb) > 0.3f)
             {
                 diff = destb - boy_pos.position;
                 diff.Normalize();
 
-                boy_pos.transform.position += diff * 0.1f;
+                boy_pos.transform.position += diff * 0.4f;
             }
             else
             {
@@ -100,7 +103,7 @@ public class Kids_one : MonoBehaviour {
     {
         while (true)
         {
-            if (tmp > 0)
+            if (tmp > 7)
             {
                 boy.GetComponent<Animator>().SetBool("IsJumping", false);
                 girl.GetComponent<Animator>().SetBool("IsJumping", false);

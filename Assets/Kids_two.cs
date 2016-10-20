@@ -96,7 +96,7 @@ public class Kids_two : MonoBehaviour {
             {
                 Debug.Log("Failure");
                 
-                if(currentIndex<1)
+                if(currentIndex<3)
                 {
                     GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyFatFinal"), boy.position, boy.transform.rotation);
                     spawned.transform.parent = boy_pos;
@@ -187,7 +187,7 @@ public class Kids_two : MonoBehaviour {
             diff.Normalize();
             if (Vector3.Distance(p1.transform.position, dest) > 0.3f)
             {
-                p1.transform.position += diff * 0.1f;
+                p1.transform.position += diff * 0.4f;
                 if (tmp.x/3f < boy_pos.GetChild(0).localScale.x)
                 {
                     boy_pos.GetChild(0).localScale = boy_pos.GetChild(0).localScale - Vector3.one * 0.01f;
@@ -200,14 +200,14 @@ public class Kids_two : MonoBehaviour {
                 diff = destg - girl_pos.position;
                 diff.Normalize();
 
-                girl_pos.transform.position += diff * 0.1f;
+                girl_pos.transform.position += diff * 0.4f;
             }
             else if (Vector3.Distance(boy_pos.transform.position, destb) > 0.3f)
             {
                 diff = destb - boy_pos.position;
                 diff.Normalize();
                 
-                boy_pos.transform.position += diff * 0.1f;
+                boy_pos.transform.position += diff * 0.4f;
             }
             else
                 GetComponent<ScenarioController>().currentAction++;

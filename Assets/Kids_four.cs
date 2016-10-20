@@ -25,8 +25,8 @@ public class Kids_four : MonoBehaviour {
             spawned.GetComponent<Rigidbody2D>().velocity = Vector3.ClampMagnitude(diff * 1000000f, 13f);
         }
 
-		if ((boy.GetChild(0).position.y > 20f && girl.GetChild(0).position.y > 20f)
-			|| (boy.GetChild(0).position.y <= -10f && girl.GetChild(0).position.y <= -10f)) {
+		if ((boy.GetChild(0).position.y > 20f || boy.GetChild(0).position.y <= -10f)
+			&& (girl.GetChild(0).position.y > 20f || girl.GetChild(0).position.y <= -10f)) {
 
 			controller.GetComponent<ScenarioController>().currentAction++;
             enabled = false;
