@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Actions { Kids1, Kids2, Kids3, Kids4, Mister2, Mister3, Mister4, Girl1, Girl2, Girl3, Girl4, Girl5 };
+public enum Actions { Init, Kids1, Kids2, Kids3, Kids4, Mister2, Mister3, Mister4, Girl1, Girl2, Girl3, Girl4, Girl5 };
 
 public class ScenarioController : MonoBehaviour {
 
@@ -37,27 +37,18 @@ public class ScenarioController : MonoBehaviour {
                 break;
      
 		case Actions.Mister2:
-			if(GetComponent<Mister_two>().enabled == false) {
-				GetComponent<Mister_three>().enabled = true;
-				currentAction++;
-			}
-			break;
+                GetComponent<Mister_two>().enabled = true;
+                // GetComponent<Mister_three>().enabled = true;
+                break;
 		case Actions.Mister3:
-			/*GetComponent<Mister_two>().enabled = false;
-			GetComponent<Mister_three>().enabled = true;
-			*/
-			if(GetComponent<Mister_three>().enabled == false) {
-				GetComponent<Mister_four>().enabled = true;
-				currentAction++;
-			}
-
-			break;
+			GetComponent<Mister_two>().enabled = false;
+            GetComponent<Mister_three>().enabled = true;
+                if(GameObject.Find("MazeWall"))
+                    GameObject.Find("MazeWall").SetActive(false);
+                break;
 		case Actions.Mister4:
-                if (GetComponent<Mister_four>().enabled == false)
-                {
-                    //GetComponent<Mister_four>().enabled = true;
-                    currentAction++;
-                }
+                GetComponent<Mister_three>().enabled = false;
+                GetComponent<Mister_four>().enabled = true;
                 break;
 
             case Actions.Girl1:
@@ -78,7 +69,7 @@ public class ScenarioController : MonoBehaviour {
                 break;
         }
 
-        /*if (Input.GetMouseButtonDown(0))
-            currentAction++;*/
+        if (Input.GetMouseButtonDown(0))
+            GetComponent<ScreenShake>().shakeDuration = 2f;
 	}
 }

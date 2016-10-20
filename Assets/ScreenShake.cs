@@ -30,7 +30,8 @@ public class ScreenShake : MonoBehaviour {
 	{
 		if (shakeDuration > 0)
 		{
-			camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            camTransform.GetComponent<CameraController>().enabled = false;
+            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
 
 			shakeDuration -= Time.deltaTime * decreaseFactor;
 		}
@@ -38,6 +39,7 @@ public class ScreenShake : MonoBehaviour {
 		{
 			shakeDuration = 0f;
 			camTransform.localPosition = originalPos;
-		}
+            camTransform.GetComponent<CameraController>().enabled = true;
+        }
 	}
 }

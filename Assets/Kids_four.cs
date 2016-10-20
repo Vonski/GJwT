@@ -29,7 +29,7 @@ public class Kids_four : MonoBehaviour {
 			|| (boy.GetChild(0).position.y <= -10f && girl.GetChild(0).position.y <= -10f)) {
 
 			controller.GetComponent<ScenarioController>().currentAction++;
-			enabled = false;
+            enabled = false;
 		}
             
     }

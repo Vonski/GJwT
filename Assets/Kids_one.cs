@@ -61,9 +61,6 @@ public class Kids_one : MonoBehaviour {
             dest = p1.position + Vector3.right * 16f;
             destg = girl_pos.position + Vector3.right * 16f - Vector3.right * 4f;
             destb = girl_pos.position + Vector3.right * 16f - Vector3.right * 8f + Vector3.up * 0.15f;
-            Debug.Log(destb);
-            
-            //GetComponent<ScenarioController>().currentAction++;
         }
     }
 
@@ -90,7 +87,11 @@ public class Kids_one : MonoBehaviour {
                 boy_pos.transform.position += diff * 0.1f;
             }
             else
+            {
+                enabled = false;
                 GetComponent<ScenarioController>().currentAction++;
+            }
+                
 
         }
     }

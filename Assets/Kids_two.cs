@@ -11,6 +11,7 @@ public class Kids_two : MonoBehaviour {
     public float time;
     bool lerp;
     Vector3 dest, destg, destb;
+    Vector3 tmp;
 
     // Use this for initialization
     void Start () {
@@ -99,12 +100,13 @@ public class Kids_two : MonoBehaviour {
                 {
                     GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyFatFinal"), boy.position, boy.transform.rotation);
                     spawned.transform.parent = boy_pos;
-                    spawned.transform.localScale = boy.localScale / 3;
+                    spawned.transform.localScale = boy.localScale;
                     spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlFatFinal"), girl.position, girl.transform.rotation);
                     spawned.transform.parent = girl_pos;
-                    spawned.transform.localScale = girl.localScale / 3;
+                    spawned.transform.localScale = girl.localScale;
 
                     GetComponent<Points>().ghost1--;
+                    tmp = boy.localScale;
 
                     Destroy(boy.gameObject);
                     Destroy(girl.gameObject);
@@ -120,10 +122,12 @@ public class Kids_two : MonoBehaviour {
                 {
                     GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMiddleFinal"), boy.position, boy.transform.rotation);
                     spawned.transform.parent = boy_pos;
-                    spawned.transform.localScale = boy.localScale / 3;
+                    spawned.transform.localScale = boy.localScale;
                     spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMiddleFinal"), girl.position, girl.transform.rotation);
                     spawned.transform.parent = girl_pos;
-                    spawned.transform.localScale = girl.localScale / 3;
+                    spawned.transform.localScale = girl.localScale;
+                        
+                    tmp = boy.localScale;
 
                     Destroy(boy.gameObject);
                     Destroy(girl.gameObject);
@@ -142,10 +146,12 @@ public class Kids_two : MonoBehaviour {
 
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.position, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
-            spawned.transform.localScale = boy.localScale / 3;
+            spawned.transform.localScale = boy.localScale;
             spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.position, girl.transform.rotation);
             spawned.transform.parent = girl_pos;
-            spawned.transform.localScale = girl.localScale / 3;
+            spawned.transform.localScale = girl.localScale;
+
+            tmp = boy.localScale;
 
             Destroy(boy.gameObject);
             Destroy(girl.gameObject);
@@ -182,7 +188,15 @@ public class Kids_two : MonoBehaviour {
             Vector3 diff = dest - p1.transform.position;
             diff.Normalize();
             if (Vector3.Distance(p1.transform.position, dest) > 0.3f)
+            {
                 p1.transform.position += diff * 0.1f;
+                if (tmp.x/3f < boy_pos.GetChild(0).localScale.x)
+                {
+                    boy_pos.GetChild(0).localScale = boy_pos.GetChild(0).localScale - Vector3.one * 0.01f;
+                    girl_pos.GetChild(0).localScale = girl_pos.GetChild(0).localScale - Vector3.one * 0.01f;
+                }
+                    
+            }
             else if (Vector3.Distance(girl_pos.transform.position, destg) > 0.3f)
             {
                 diff = destg - girl_pos.position;
