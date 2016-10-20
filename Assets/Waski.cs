@@ -33,10 +33,6 @@ public class Waski : MonoBehaviour {
                 armata.GetComponent<Kids_three>().StopAllCoroutines();
                 armata.GetComponent<Kids_four>().enabled = true;
                 break;
-            case Actions.Kids5:
-                armata.GetComponent<Kids_four>().enabled = false;
-                kid.GetComponent<Kids_five>().enabled = true;
-                break;
         }
 
         /*if (Input.GetMouseButtonDown(0))

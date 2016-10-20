@@ -15,12 +15,6 @@ public class Raptor : MonoBehaviour {
 		
 	    switch (currentAction)
         {
-		case Actions.Mister1:
-			if(GetComponent<Mister_one>().enabled == false) {
-				GetComponent<Mister_two>().enabled = true;
-				currentAction++;
-			}
-			break;
 		case Actions.Mister2:
 			if(GetComponent<Mister_two>().enabled == false) {
 				GetComponent<Mister_three>().enabled = true;

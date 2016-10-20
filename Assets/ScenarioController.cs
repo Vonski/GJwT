@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Actions { Kids1, Kids2, Kids3, Kids4, Kids5, Mister1, Mister2, Mister3, Mister4, Girl1, Girl2, Girl3, Girl4, Girl5 };
+public enum Actions { Kids1, Kids2, Kids3, Kids4, Mister2, Mister3, Mister4, Girl1, Girl2, Girl3, Girl4, Girl5 };
 
 public class ScenarioController : MonoBehaviour {
 
@@ -29,21 +29,13 @@ public class ScenarioController : MonoBehaviour {
                 GetComponent<Kids_two>().enabled = false;
                 armata.GetComponent<Kids_three>().enabled = true;
                 break;
-            case Actions.Kids4:
-                armata.GetComponent<Kids_three>().enabled = false;
-                armata.GetComponent<Kids_three>().StopAllCoroutines();
-                armata.GetComponent<Kids_four>().enabled = true;
+		case Actions.Kids4:
+			armata.GetComponent<Kids_three> ().enabled = false;
+			armata.GetComponent<Kids_three> ().StopAllCoroutines ();
+			armata.GetComponent<Kids_four>().enabled = true;
+
                 break;
-            case Actions.Kids5:
-                armata.GetComponent<Kids_four>().enabled = false;
-                kid.GetComponent<Kids_five>().enabled = true;
-                break;
-            case Actions.Mister1:
-			if(GetComponent<Mister_one>().enabled == false) {
-				GetComponent<Mister_two>().enabled = true;
-				currentAction++;
-			}
-			break;
+     
 		case Actions.Mister2:
 			if(GetComponent<Mister_two>().enabled == false) {
 				GetComponent<Mister_three>().enabled = true;

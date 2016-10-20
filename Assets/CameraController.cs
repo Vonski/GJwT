@@ -28,12 +28,6 @@ public class CameraController : MonoBehaviour {
 		case Actions.Kids4:
 			transform.position = p1.transform.position + Vector3.back * 10 + Vector3.left * 5f + Vector3.up * 2f;
 			break;
-		case Actions.Kids5:
-			transform.position = p1.transform.position + Vector3.back*10;
-			break;
-		case Actions.Mister1:
-                transform.position = p2.transform.position + Vector3.back * 10;
-                break;
 		case Actions.Mister2:
 			transform.position = p2.transform.position + Vector3.back * 10;
 			break;
