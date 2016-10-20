@@ -12,6 +12,8 @@ TagManager:
   - Gorczyca
   - Actual
   - Fatual
+  - LHand
+  - RHand
   layers:
   - Default
   - TransparentFX
