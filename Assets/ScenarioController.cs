@@ -69,7 +69,7 @@ public class ScenarioController : MonoBehaviour {
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0))
-            GetComponent<ScreenShake>().shakeDuration = 2f;
+        /*if (Input.GetMouseButtonDown(0))
+            GetComponent<ScreenShake>().shakeDuration = 2f;*/
 	}
 }
