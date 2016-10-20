@@ -25,6 +25,9 @@ public class SowaDestroy : MonoBehaviour {
 
 		for (int i = 0; i < transform.childCount; i++) {
 			transform.GetChild (i).gameObject.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+
+			transform.GetChild(i).gameObject.transform.position += new Vector3(Random.Range(-2f, 2f),
+				Random.Range(-2f, 2f), 0f);
 		}
 	}
 }
