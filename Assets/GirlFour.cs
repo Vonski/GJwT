@@ -4,8 +4,8 @@ using System.Collections;
 public class GirlFour : MonoBehaviour {
 
     bool Started = false;
-    bool FirstH = false;
-    bool SecondH = false;
+    bool FirstH = true;
+    bool SecondH = true;
     GameObject Johny;
     int shakes = 0;
     public bool lerp = false;
@@ -48,7 +48,13 @@ public class GirlFour : MonoBehaviour {
             }
         }
 
-        if (shakes == 8)
+            if (Input.GetKeyDown("left"))
+            {
+                ThirdHands();
+                shakes++;
+            }
+
+            if (shakes == 3)
         {
             lerp = true;
         }
@@ -73,15 +79,32 @@ public class GirlFour : MonoBehaviour {
 
     void FirstHands()
     {
-        FirstH = true;
-        SecondH = false;
-        Johny.transform.GetChild(0).transform.Rotate(0, 0, 90);
+        //FirstH = true;
+        //SecondH = false;
+        //Johny.transform.GetChild(0).transform.Rotate(0, 0, 90);
+        Vector3 JS = Johny.transform.GetChild(0).transform.localScale;
+        Transform JH = Johny.transform.GetChild(0).transform;
+        Johny.transform.GetChild(0).transform.localScale = new Vector3(JS.x, -JS.y, JS.z);
+        JH.position += new Vector3(0, 2, 0);
     }
 
     void SecondHands()
     {
-        SecondH = true;
-        FirstH = false;
-        Johny.transform.GetChild(2).transform.Rotate(0, 0, 90);
+        //SecondH = true;
+        //FirstH = false;
+        //Johny.transform.GetChild(2).transform.Rotate(0, 0, 90);
+        Transform JH = Johny.transform.GetChild(2).transform;
+        Vector3 JS = Johny.transform.GetChild(2).transform.localScale;
+        Johny.transform.GetChild(2).transform.localScale = new Vector3(JS.x, -JS.y, JS.z);
+        JH.Rotate(0, 0, 90);
+        JH.position += new Vector3(0, -0.4f, 0);
+    }
+
+    void ThirdHands()
+    {
+        Vector3 JS = Johny.transform.GetChild(0).transform.localScale;
+        Transform JH = Johny.transform.GetChild(0).transform;
+        JH.position -= new Vector3(0, 2, 0);
+        Johny.transform.GetChild(0).transform.localScale = new Vector3(JS.x, -JS.y, JS.z);
     }
 }
