@@ -103,7 +103,7 @@ GameObject:
   - 95: {fileID: 95000014289334404}
   m_Layer: 0
   m_Name: AerobikGirlKadlub
-  m_TagString: Player
+  m_TagString: Actual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
