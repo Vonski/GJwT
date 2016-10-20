@@ -18,7 +18,7 @@ public class GirlTwo : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile"), transform.position + diff * 5f, new Quaternion(0f, 0f, 0f, 0f));
+            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Missile1"), transform.position + diff * 5f, new Quaternion(0f, 0f, 0f, 0f));
             spawned.GetComponent<Rigidbody2D>().velocity = diff * 30;
             spawned.gameObject.name = "Lasso";
         }
