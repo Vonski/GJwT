@@ -59,8 +59,11 @@ public class ScenarioController : MonoBehaviour {
                 GetComponent<GirlOne>().enabled = false;
                 GirlGhost.GetComponent<GirlOneMovement>().enabled = false;
 
-                GirlGhost.GetComponent<GirlTwoMovement>().enabled = true;
-                GirlGhost.GetComponent<GirlTwoMovement>().OnActionStart();
+                //GirlGhost.GetComponent<GirlTwoMovement>().enabled = true;
+                //GirlGhost.GetComponent<GirlTwoMovement>().OnActionStart();
+
+                currentAction = Actions.Girl3;
+
                 break;
             case Actions.Girl3:
                 GirlGhost.GetComponent<GirlTwoMovement>().enabled = false;

@@ -10,10 +10,14 @@ public class GirlTwoMovement : MonoBehaviour {
 
     public Transform LassoRoot;
     public Transform GameController;
+    public bool lerp = false;
+    Vector3 dest;
 
     // Use this for initialization
     void Start () {
         enabled = false;
+        GirlStartPosition = transform.position;
+        dest = transform.parent.transform.position + new Vector3(0, -12.0f, 0);
     }
 
     public void OnActionStart()
@@ -26,30 +30,49 @@ public class GirlTwoMovement : MonoBehaviour {
                 new Quaternion(0f, 0f, 0f, 0f));
             LassoRoot = spawned.transform;
             GirlStartPosition = transform.position;
+            dest = transform.parent.transform.position + new Vector3(0, -12.0f, 0);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((transform.position.x < GirlStartPosition.x - 2 ||
-            transform.position.x > GirlStartPosition.x + 2 ||
-            transform.position.y < GirlStartPosition.y - 2 ||
-            transform.position.y > GirlStartPosition.y + 2) && 
-            !GirlStable)
+        if (!lerp)
         {
-            SpringJoint2D Stabilizer = gameObject.AddComponent<SpringJoint2D>();
-            Stabilizer.connectedAnchor = new Vector2(transform.position.x, transform.position.y + 3.0f);
-            GirlStable = true;
-        }
-
-        if (GirlCaught && GirlStable)
-            if (GetComponent<Rigidbody2D>().velocity.magnitude < 0.5)
+            if ((transform.position.x < GirlStartPosition.x - 2 ||
+                transform.position.x > GirlStartPosition.x + 2 ||
+                transform.position.y < GirlStartPosition.y - 2 ||
+                transform.position.y > GirlStartPosition.y + 2) &&
+                !GirlStable)
             {
-                gameObject.transform.parent.transform.position += new Vector3(0, -12.0f, 0);
-                GameController.GetComponent<ScenarioController>().currentAction++;
-                CleanUp();
+                SpringJoint2D Stabilizer = gameObject.AddComponent<SpringJoint2D>();
+                Stabilizer.connectedAnchor = new Vector2(transform.position.x, transform.position.y + 3.0f);
+                GirlStable = true;
             }
+
+            if (GirlCaught && GirlStable)
+                if (GetComponent<Rigidbody2D>().velocity.magnitude < 0.5)
+                {
+                    lerp = true;
+                    CleanUp();
+                }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (lerp)
+        {
+            Vector3 diff = dest - transform.parent.transform.position;
+            diff.Normalize();
+            if (Vector3.Distance(transform.parent.transform.position, dest) > 0.3f)
+            {
+               
+                transform.parent.transform.position += diff * 0.1f;
+            }
+            else
+                GameController.GetComponent<ScenarioController>().currentAction++;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
