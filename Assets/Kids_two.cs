@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Kids_two : MonoBehaviour {
-
+    
     public Transform hangman;
     public Transform p1;
     private Transform boy, girl, boy_pos, girl_pos;
@@ -90,40 +90,65 @@ public class Kids_two : MonoBehaviour {
             if (Input.anyKeyDown)
             {
                 Debug.Log("Failure");
-                p1.position += Vector3.right * 24f + Vector3.down*2f;
+                
+                if(currentIndex<3)
+                {
+                    GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyFatFinal"), boy.position, boy.transform.rotation);
+                    spawned.transform.parent = boy_pos;
+                    spawned.transform.localScale = boy.localScale / 3;
+                    spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlFatFinal"), girl.position, girl.transform.rotation);
+                    spawned.transform.parent = girl_pos;
+                    spawned.transform.localScale = girl.localScale / 3;
 
-                GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.transform.position + Vector3.up * 0.08f, boy.transform.rotation);
-                spawned.transform.parent = boy_pos;
-                spawned.transform.localScale = boy.localScale/3;
-                spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.transform.position + Vector3.up * 0.24f, girl.transform.rotation);
-                spawned.transform.parent = girl_pos;
-                spawned.transform.localScale = girl.localScale/3;
+                    GetComponent<Points>().ghost1--;
 
-                Destroy(boy.gameObject);
-                Destroy(girl.gameObject);
+                    Destroy(boy.gameObject);
+                    Destroy(girl.gameObject);
 
-                girl_pos.position += Vector3.up * 0.55f;
-                boy_pos.position += Vector3.right * 5f + Vector3.up * 0.15f;
+                    p1.position += Vector3.right * 24f + Vector3.down * 2f;
+                    girl_pos.position += Vector3.right * 2f + Vector3.up * 0.55f;
+                    boy_pos.position -= Vector3.left * 6f - Vector3.down * 0.35f;
+                }
+                else
+                {
+                    GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMiddleFinal"), boy.position, boy.transform.rotation);
+                    spawned.transform.parent = boy_pos;
+                    spawned.transform.localScale = boy.localScale / 3;
+                    spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMiddleFinal"), girl.position, girl.transform.rotation);
+                    spawned.transform.parent = girl_pos;
+                    spawned.transform.localScale = girl.localScale / 3;
+
+                    Destroy(boy.gameObject);
+                    Destroy(girl.gameObject);
+
+                    p1.position += Vector3.right * 24f + Vector3.down * 2f;
+                    girl_pos.position += Vector3.up * 0.55f;
+                    boy_pos.position += Vector3.right * 4f + Vector3.up * 0.1f;
+                }
                 
                 GetComponent<ScenarioController>().currentAction++;
             }
         }
         else
         {
-            p1.position += Vector3.right * 24f + Vector3.down * 2f;
 
-            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.transform.position + Vector3.up * 0.08f, boy.transform.rotation);
+            GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyMcKadlub"), boy.position, boy.transform.rotation);
             spawned.transform.parent = boy_pos;
+            spawned.transform.position = new Vector3(0f, 0f, 0f);
             spawned.transform.localScale = boy.localScale / 3;
-            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.transform.position + Vector3.up * 0.24f, girl.transform.rotation);
+            spawned = (GameObject)Instantiate(Resources.Load("Prefabs/GirlMcKadlub"), girl.position, girl.transform.rotation);
             spawned.transform.parent = girl_pos;
+            spawned.transform.position = new Vector3(0f, 0f, 0f);
             spawned.transform.localScale = girl.localScale / 3;
 
             Destroy(boy.gameObject);
             Destroy(girl.gameObject);
 
-            girl_pos.position += Vector3.up * 0.55f;
-            boy_pos.position += Vector3.right * 5f + Vector3.up * 0.15f;
+            GetComponent<Points>().ghost1++;
+
+            p1.position += Vector3.right * 24f + Vector3.down * 2f;
+            girl_pos.position += Vector3.right * 22f + Vector3.up * 0.55f;
+            boy_pos.position += Vector3.right * 20f + Vector3.up * 0.15f;
 
             GetComponent<ScenarioController>().currentAction++;
         }
