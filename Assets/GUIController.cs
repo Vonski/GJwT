@@ -9,7 +9,6 @@ public class GUIController : MonoBehaviour {
 
     public void StartGame()
     {
-        //GameObject.Find("GameController").GetComponent<AudioSource>().enabled = true;
         GameObject.Find("GameController").GetComponent<ScenarioController>().currentAction++;
         gameObject.SetActive(false);
     }
