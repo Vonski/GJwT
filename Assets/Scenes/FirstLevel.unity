@@ -1035,7 +1035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &512482329
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846ea2679a918e346824a6bfd0626044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAction: 0
+  currentAction: 8
   GirlGhost: {fileID: 1153685905}
   armata: {fileID: 1918612}
   kid: {fileID: 0}
@@ -2562,6 +2562,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1691992398}
+--- !u!1 &1719097376 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012822014088, guid: e384341c3f1708c459b9b0f17566cebf,
+    type: 2}
+  m_PrefabInternal: {fileID: 301851308}
+--- !u!114 &1719097380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719097376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d54faa05862e74b82a7fe669b20501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1719097381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719097376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20194d429972b441bab22bfec307340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameController: {fileID: 795863741}
 --- !u!1 &1790774441
 GameObject:
   m_ObjectHideFlags: 0
