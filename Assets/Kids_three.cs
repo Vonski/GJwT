@@ -27,7 +27,7 @@ public class Kids_three : MonoBehaviour {
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rot_z-30f);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             int tmp = (int)Random.Range(0f,100f);
             GameObject spawned;
@@ -38,7 +38,7 @@ public class Kids_three : MonoBehaviour {
             else
                 spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Missile/Brokul"), transform.position + diff * 8f * transform.localScale.x + Vector3.Cross(diff, Vector3.back) * 1.8f * transform.localScale.x, new Quaternion(0f, 0f, 0f, 0f));
             if(Random.Range(0f, 100f)<50f)
-                spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 10f);
+                spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 20f);
             else
                 spawned.GetComponent<RotateMissile>().rot_speed = Random.Range(2f, 10f)*(-1);
             spawned.transform.localScale = transform.localScale/3f;
@@ -82,7 +82,7 @@ public class Kids_three : MonoBehaviour {
                 diff = girl.transform.position - spawned.transform.position + Vector3.up;
             diff.Normalize();
             
-            spawned.GetComponent<Rigidbody2D>().velocity = diff * 2f;
+            spawned.GetComponent<Rigidbody2D>().velocity = diff * 4f;
 
             yield return new WaitForSeconds(waitTime);
         }
