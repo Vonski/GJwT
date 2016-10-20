@@ -39,6 +39,7 @@ public class ScreenShake : MonoBehaviour {
 		{
 			shakeDuration = 0f;
 			camTransform.localPosition = originalPos;
+            enabled = false;
             camTransform.GetComponent<CameraController>().enabled = true;
         }
 	}

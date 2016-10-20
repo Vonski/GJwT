@@ -21,6 +21,8 @@ public class CollisionController : MonoBehaviour {
         if (tag == "Fatual" && coll.gameObject.tag == "Gorczyca")
         {
             GetComponent<Rigidbody2D>().velocity = Vector3.down * 5f;
+            GameObject.Find("GameController").GetComponent<ScreenShake>().shakeDuration = 2f;
+            GameObject.Find("GameController").GetComponent<ScreenShake>().enabled = true;
             Debug.Log("Highway to helln");
         }
     }

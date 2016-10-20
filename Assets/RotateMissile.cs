@@ -16,6 +16,8 @@ public class RotateMissile : MonoBehaviour {
             GetComponent<Rigidbody2D>().gravityScale = 2f;
         if (tag == "Enemy_missile" && coll.gameObject.tag == "Actual")
         {
+            GameObject.Find("GameController").GetComponent<ScreenShake>().shakeDuration = 2f;
+            GameObject.Find("GameController").GetComponent<ScreenShake>().enabled = true;
             GameObject spawned;
             if (coll.gameObject.transform.GetComponent<Rigidbody2D>().mass>20000)
                 spawned = (GameObject)Instantiate(Resources.Load("Prefabs/BoyFatFinal"), coll.gameObject.transform.position, coll.gameObject.transform.transform.rotation);
@@ -27,6 +29,11 @@ public class RotateMissile : MonoBehaviour {
             Destroy(coll.gameObject);
 
             Debug.Log("Failure");
+        }
+        if (tag == "Enemy_missile" && coll.gameObject.tag == "Fatual")
+        {
+            GameObject.Find("GameController").GetComponent<ScreenShake>().shakeDuration = 2f;
+            GameObject.Find("GameController").GetComponent<ScreenShake>().enabled = true;
         }
     }
 }

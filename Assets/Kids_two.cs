@@ -113,7 +113,6 @@ public class Kids_two : MonoBehaviour {
 
                     lerp = true;
 
-
                     dest = p1.position + Vector3.right * 24f;
                     destg = girl_pos.position + Vector3.right * 24f + Vector3.down;
                     destb = girl_pos.position + Vector3.right * 24f + Vector3.down*2f;
@@ -133,7 +132,6 @@ public class Kids_two : MonoBehaviour {
                     Destroy(girl.gameObject);
 
                     lerp = true;
-
 
                     dest = p1.position + Vector3.right * 24f;
                     destg = girl_pos.position + Vector3.right * 24f + Vector3.down;
