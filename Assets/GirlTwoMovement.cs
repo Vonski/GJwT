@@ -22,7 +22,7 @@ public class GirlTwoMovement : MonoBehaviour {
         {
             Started = true;
             GameObject spawned = (GameObject)Instantiate(Resources.Load("Prefabs/Lasso"),
-                transform.position + new Vector3(-1.0f, -4.0f, 0),
+                transform.position + new Vector3(-1.0f, -5.5f, 0),
                 new Quaternion(0f, 0f, 0f, 0f));
             LassoRoot = spawned.transform;
             GirlStartPosition = transform.position;
@@ -46,6 +46,7 @@ public class GirlTwoMovement : MonoBehaviour {
         if (GirlCaught && GirlStable)
             if (GetComponent<Rigidbody2D>().velocity.magnitude < 0.5)
             {
+                gameObject.transform.parent.transform.position += new Vector3(0, -12.0f, 0);
                 GameController.GetComponent<ScenarioController>().currentAction++;
                 CleanUp();
             }
